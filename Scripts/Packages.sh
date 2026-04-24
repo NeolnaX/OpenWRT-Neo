@@ -75,6 +75,7 @@ UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
 UPDATE_PACKAGE "quickfile" "sbwml/luci-app-quickfile" "main"
 UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
 UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
+UPDATE_PACKAGE "owq-wol" "isalikai/luci-app-owq-wol" "main"
 UPDATE_PACKAGE "UA-Mask" "Zesuy/UA-Mask" "main"
 UPDATE_PACKAGE "UA3F" "SunBK201/UA3F" "master"
 
