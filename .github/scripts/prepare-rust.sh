@@ -50,6 +50,13 @@ done
 sed -i '/^include \.\/ci-prebuilt.mk$/d; /^$(eval $(call HostBuild))$/i include ./ci-prebuilt.mk' "$RUST_MAKEFILE"
 grep -Fxq 'include ./ci-prebuilt.mk' "$RUST_MAKEFILE"
 
+# Refresh host/bin symlinks directly as well so restored build caches stay valid across runner updates.
+if [ -d ./staging_dir/host/bin ]; then
+	ln -sfn "$RUST_ROOT/bin/cargo" ./staging_dir/host/bin/cargo
+	ln -sfn "$RUST_ROOT/bin/rustc" ./staging_dir/host/bin/rustc
+	ln -sfn "$RUST_ROOT/bin/rustdoc" ./staging_dir/host/bin/rustdoc
+fi
+
 "$RUST_ROOT/bin/rustc" --version | tee -a "$REPORT_DIR/rust-toolchain.txt"
 echo "Using runner Rust $RUST_TOOLCHAIN for $RUST_TARGET" | tee -a "$REPORT_DIR/rust-toolchain.txt"
 sha256sum "$RUST_MAKEFILE" >> "$REPORT_DIR/rust-toolchain.txt"
